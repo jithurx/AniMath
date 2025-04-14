@@ -35,9 +35,9 @@ def generate_manim_code(refined_prompt):
         "Based on the "
         "The script should define a Manim class called 'AutoScene'. "
         "Ensure that text elements are well-aligned and old text disappears before new text appears. "
-        "Ensure proper alignment, remove previous text before adding new text, and include smooth transitions."#
-        "Take note of frame space and don't overflow out of frame"#
-        "try to utilize all the frame area withouth overlapping"#
+        "Ensure proper alignment, remove previous text before adding new text, and include smooth transitions. "
+        "Take note of frame space and don't overflow out of frame. "
+        "Try to utilize all the frame area without overlapping."
     )
 
     response = model.generate_content(final_prompt)
@@ -47,6 +47,17 @@ def generate_manim_code(refined_prompt):
     else:
         print("Error: Failed to generate Manim code.")
         return None
+
+def clean_text(text: str) -> str:
+    prefix = "```python"
+    suffix = "```"
+    
+    if text.startswith(prefix):
+        text = text[len(prefix):]
+    if text.endswith(suffix):
+        text = text[:-len(suffix)]
+    
+    return text.strip()
 
 def save_manim_script(code, filename="generated_manim.py"):
     """Save the AI-generated Manim script to a file."""
@@ -66,36 +77,23 @@ def main():
 
     if refined_prompt:
         print("\nUsing refined prompt to generate Manim code...\n", refined_prompt)
-        manim_code =generate_manim_code(refined_prompt)
+        manim_code = generate_manim_code(refined_prompt)
 
         if manim_code:
             print("\nGenerated Manim Code:\n")
-            clean_manim_code=clean_text(manim_code)
+            clean_manim_code = clean_text(manim_code)
             print(clean_manim_code)  # Print the generated Manim script
 
             print("\nSaving Manim script...")
             
             save_manim_script(clean_manim_code)
             
-            
-
             print("\nRunning Manim script...")
             run_manim_script()
         else:
             print("Failed to generate Manim code.")
     else:
         print("Failed to refine prompt.")
-def clean_text(text: str) -> str:
-    prefix = "```python"
-    suffix = "```"
-    
-    if text.startswith(prefix):
-        text = text[len(prefix):]
-    if text.endswith(suffix):
-        text = text[:-len(suffix)]
-    
-    return text.strip()
-
 
 if __name__ == "__main__":
     main()
