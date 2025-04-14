@@ -3,7 +3,6 @@
 > Create beautiful animations of mathematical concepts with AI assistance!
 
 ![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 ## 📚 Overview
 
@@ -119,10 +118,6 @@ Perfect for:
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🙏 Acknowledgments
 
