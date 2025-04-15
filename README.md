@@ -1,36 +1,39 @@
 # 🧮 Manim Math Visualization Generator
 
-> Create beautiful animations of mathematical concepts with AI assistance!
+> **Transform math concepts into stunning animations using the power of AI and Manim.**
 
 ![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg)
 
+
 ## 📚 Overview
 
-The **Manim Math Visualization Generator** is a powerful tool that combines the visualization capabilities of [Manim](https://www.manim.community/) with the intelligence of Google's Gemini AI. This application allows you to transform plain text descriptions of mathematical concepts into stunning, animated visualizations with just a few clicks.
+The **Manim Math Visualization Generator** is a powerful, AI-assisted tool that bridges the gap between mathematical ideas and beautiful animations. By combining [Manim](https://www.manim.community/)—the leading engine for mathematical animations—with Google’s **Gemini AI**, you can generate professional-quality visuals from simple text descriptions.
 
-Perfect for:
-- 👩‍🏫 Teachers explaining complex math concepts
-- 👨‍🎓 Students creating visual study aids
-- 💻 Content creators developing educational materials
-- 🧪 Researchers visualizing mathematical models
+### Ideal for:
+- 👩‍🏫 **Teachers** explaining complex concepts visually  
+- 👨‍🎓 **Students** creating engaging study material  
+- 💻 **Content creators** building educational content  
+- 🧪 **Researchers** visualizing theoretical models  
+
 
 ## ✨ Features
 
-- 🤖 AI-powered conversion of math descriptions to Manim code
-- 📊 Beautiful animations with professional-quality rendering
-- 🎯 User-friendly interface requiring no coding knowledge
-- 🎬 Video export for use in presentations or educational content
-- ⚙️ Seamless integration with Google Gemini's AI capabilities
+- 🤖 **AI-Powered Conversion**: Turns math descriptions into Manim Python code  
+- 🎬 **High-Quality Animations**: Professional-grade rendering using Manim  
+- 🖱️ **No Coding Required**: Intuitive interface—just type and visualize  
+- 📥 **Video Export**: Save animations for use in slides, videos, or lessons  
+- 🔗 **Google Gemini Integration**: Powered by advanced generative AI  
 
-## 🛠️ Setup and Installation
 
-### Prerequisites
+## 🛠️ Installation & Setup
 
-- Python 3.7 or higher
-- Internet connection (for API access)
-- Google Gemini API key ([Get one here](https://aistudio.google.com/))
+### ✅ Prerequisites
 
-### Quick Start
+- Python 3.7+
+- Internet connection (for AI capabilities)
+- A Google Gemini API Key → [Get yours here](https://aistudio.google.com/)
+
+### ⚡ Quick Start
 
 1. **Clone the repository**
    ```bash
@@ -42,85 +45,95 @@ Perfect for:
    ```bash
    python setup.py
    ```
-   
-   This will automatically:
-   - Install Python dependencies (Manim, Pillow, Google Generative AI, etc.)
-   - Set up FFmpeg for video processing
-   - Install Cairo and other system dependencies
-   - Create a virtual environment
-   - Generate startup scripts
 
-3. **Launch the application**
-   - On Windows: Double-click `main.py`
-   - On macOS/Linux: Run `./main.py` in terminal
+   This will:
+   - Install all required dependencies (Manim, Pillow, Gemini SDK, etc.)
+   - Configure FFmpeg and Cairo for rendering
+   - Set up a virtual environment
+   - Generate launch scripts
 
-4. **Enter your Google Gemini API key** when prompted on first run
+3. **Launch the App**
+   - **Windows**: Double-click `main.py`
+   - **macOS/Linux**: Run `./main.py` in the terminal
 
-## 🖥️ Using the Application
+4. **Enter your Gemini API key** on first launch
 
-1. **Enter your mathematical concept** in the text field
+
+## 🖥️ How to Use
+
+1. **Describe your math concept**
    ```
    Examples:
-   - Show the proof of the Pythagorean theorem geometrically
-   - Visualize the convergence of a Taylor series for sin(x)
-   - Demonstrate the concept of a derivative as a limit
+   - Show a geometric proof of the Pythagorean theorem
+   - Visualize the convergence of sin(x) using its Taylor series
+   - Illustrate a derivative as the limit of secant slopes
    ```
 
-2. **Click "Generate Visualization"**
-   - The application will refine your prompt
+2. **Click “Generate Visualization”**
+   - The AI will interpret and refine your prompt
    - Generate Manim code
-   - Render the animation
-   - Display the result in the application
+   - Render and preview the animation
 
-3. **View and use the generated content**
-   - Examine the generated Manim code
-   - Play the video in your default media player
-   - The video file is saved in the `media/videos/` directory
+3. **Review Output**
+   - Watch the animation instantly
+   - Access the Manim code used
+   - Find the video in `media/videos/`
 
-## 🔧 Advanced Configuration
 
-### Changing Your API Key
+## ⚙️ Configuration & Settings
 
-1. Click the "⚙️ Settings" button in the top-right corner
-2. Select "Change API Key" and enter your new key
+### 🔐 Change Your API Key
 
-### System Requirements
+1. Click the **⚙️ Settings** icon
+2. Select **"Change API Key"**
+3. Enter your new Gemini key
+
+
+## 💻 System Requirements
 
 | Component | Minimum | Recommended |
 |-----------|---------|-------------|
-| CPU       | Dual-core | Quad-core |
-| RAM       | 4GB     | 8GB or more |
-| Storage   | 1GB free | 5GB free |
-| OS        | Windows 10, macOS 10.14, Ubuntu 18.04 | Latest version |
+| **CPU**   | Dual-core | Quad-core or better |
+| **RAM**   | 4GB       | 8GB+                |
+| **Storage**| 1GB free | 5GB+ free           |
+| **OS**    | Windows 10+, macOS 10.14+, Ubuntu 18.04+ | Latest versions |
 
-## 🚀 Future Enhancements
 
-- [ ] Support for advanced Manim customization options
-- [ ] Export to multiple video formats and resolutions
-- [ ] Library of sample concepts and visualizations
-- [ ] Collaborative sharing of generated animations
-- [ ] Integration with learning management systems
-- [ ] Direct upload to YouTube and other platforms
+## 🚧 Planned Features
 
-## 📝 Troubleshooting
+- [ ] Advanced Manim customization options
+- [ ] Export in various formats & resolutions
+- [ ] Built-in library of animations & templates
+- [ ] Collaborative visualization sharing
+- [ ] LMS integration (e.g., Moodle, Canvas)
+- [ ] One-click YouTube upload
 
-### Common Issues
 
-**Error: FFmpeg not found in PATH**
-- Ensure FFmpeg is installed properly following the installation instructions
+## 🧰 Troubleshooting
+
+### ⚠️ FFmpeg Not Found
+- Make sure FFmpeg is installed and added to your system’s `PATH`
 - Restart the application after installation
 
-**API Key Issues**
-- Verify your Google Gemini API key is valid
-- Check your internet connection
-- Ensure you have sufficient API quota remaining
+### 🔐 API Key Issues
+- Confirm your Gemini API key is valid and active
+- Ensure you're connected to the internet
+- Check your API quota limits
+
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+We welcome contributions of all kinds—feature suggestions, bug fixes, or documentation improvements.
+
+> To contribute:
+> 1. Fork the repository  
+> 2. Create a new branch (`feature/your-feature`)  
+> 3. Commit your changes  
+> 4. Submit a pull request
+
 
 ## 🙏 Acknowledgments
 
-- [Manim Community](https://www.manim.community/) for the incredible animation engine
-- [Google Gemini](https://deepmind.google/technologies/gemini/) for AI capabilities
-- All open-source contributors who made this project possible
+- [Manim Community](https://www.manim.community/) – for the amazing animation engine
+- [Google Gemini](https://deepmind.google/technologies/gemini/) – for powering the AI
+- All the open-source contributors and developers behind this project ❤️
