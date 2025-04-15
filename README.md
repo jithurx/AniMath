@@ -136,4 +136,3 @@ We welcome contributions of all kinds—feature suggestions, bug fixes, or docum
 
 - [Manim Community](https://www.manim.community/) – for the amazing animation engine
 - [Google Gemini](https://deepmind.google/technologies/gemini/) – for powering the AI
-- All the open-source contributors and developers behind this project ❤️
