@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AniMath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans:wght@400..700&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <lint rel="script" href="script.js">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span>🧮 AniMath</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#showcase">Showcase</a></li>
+                        <li><a href="#installation">Installation</a></li>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>🧮 AniMath</h1>
+            <p>Create animations of mathematical concepts with AI assistance and powered by <a style ="padding: 2px; text-decoration: none; background-color:#2c3e50;" href="https://www.manim.community/" class="btn">Manim</a> library -  no coding required!</p>
+            <div class="hero-buttons">
+                <a href="#download" class="btn">Download Now</a>
+                <a href="#showcase" class="btn btn-secondary">View Examples</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2>Features</h2>
+            <p class="section-subtitle">Powerful tool to bring mathematical concepts to life</p>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI-Powered</h3>
+                    <p>Uses Google's Gemini AI to transform plain text descriptions into Manim code - no programming knowledge required.</p>
+                </div>
+                <!--
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Professional Quality</h3>
+                    <p>Generate stunning, professionally rendered animations that help explain complex math concepts with clarity and precision.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>User-Friendly</h3>
+                    <p>Simple interface designed for educators, students, and content creators with no coding experience necessary.</p>
+                </div>
+                -->
+                <div class="feature">
+                    <div class="feature-icon">🎬</div>
+                    <h3>Video Export</h3>
+                    <p>Export your animations as video files perfect for presentations, lectures, or educational content.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Seamless Integration</h3>
+                    <p>Built on top of the powerful Manim animation engine with Google Gemini AI capabilities for the best results.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🧩</div>
+                    <h3>Customizable</h3>
+                    <p>View and modify the generated code to customize your animations for specific needs and preferences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="showcase" class="showcase">
+        <div class="container">
+            <h2>Visualization Showcase</h2>
+            <p class="section-subtitle">See the best results created with AniMath</p>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="results/" alt="Pythagorean Theorem Visualization">
+                    <div class="gallery-caption">
+                        <h3>Pythagorean Theorem</h3>
+                        <p>A geometric proof showing a² + b² = c²</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="results/" alt="Taylor Series Expansion">
+                    <div class="gallery-caption">
+                        <h3>Taylor Series Expansion</h3>
+                        <p>Visualizing how sin(x) approximates with polynomials</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="results/" alt="Calculus Derivative Concept">
+                    <div class="gallery-caption">
+                        <h3>Derivative Concept</h3>
+                        <p>Animating the concept of derivatives as slopes of tangent lines</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="resulta/" alt="Complex Number Visualization">
+                    <div class="gallery-caption">
+                        <h3>Complex Numbers</h3>
+                        <p>Visualization of complex number operations on the complex plane</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="results/" alt="Fourier Series Animation">
+                    <div class="gallery-caption">
+                        <h3>Fourier Series</h3>
+                        <p>Showing how sine waves combine to form complex functions</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="results/" alt="Vector Field Visualization">
+                    <div class="gallery-caption">
+                        <h3>Vector Fields</h3>
+                        <p>Animated visualization of vector fields and particle flow</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="installation" class="installation">
+        <div class="container">
+            <h2>Installation Guide</h2>
+            <p class="section-subtitle">Get up and running in minutes</p>
+            <div class="installation-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>System Requirements</h3>
+                        <p>Before installation, ensure your system meets the minimum requirements:</p>
+                        <ul>
+                            <li>Python 3.7 or higher</li>
+                            <li>4GB RAM (8GB recommended)</li>
+                            <li>1GB free storage (5GB recommended)</li>
+                            <li>Windows 10+, macOS 10.14+, or Ubuntu 18.04+</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Download and Extract</h3>
+                        <p>Download the latest release from the download section below and extract the files to your desired location.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Run Setup Script</h3>
+                        <p>Open a terminal or command prompt in the extracted directory and run:</p>
+                        <div class="code-snippet">
+                            python setup.py
+                        </div>
+                        <p>This script will install all required dependencies including:</p>
+                        <ul>
+                            <li>Python dependencies (Manim, Google Generative AI, etc.)</li>
+                            <li>FFmpeg for video processing</li>
+                            <!-- <li>Cairo and other system libraries</li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Launch the Application</h3>
+                        <p>After setup is complete, launch the application:</p>
+                        <ul>
+                            <li><strong>Windows:</strong> Double-click <code>main.py</code></li>
+                            <li><strong>macOS/Linux:</strong> Run <code>./main.py</code> in terminal</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Enter API Key</h3>
+                        <p>On first run, you'll be prompted to enter your Google Gemini API key. If you don't have one yet, you can get it from <a href="https://aistudio.google.com/" target="_blank">Google AI Studio</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="download">
+        <div class="container">
+            <h2>Download</h2>
+            <p class="section-subtitle">Get the latest version of Manim Math Visualization Generator</p>
+            <div class="download-options">
+                <div class="download-option">
+                    <div class="download-icon">🪟</div>
+                    <h3>Windows</h3>
+                    <p>Compatible with Windows 10 and 11</p>
+                    <a href="https://github.com/jithurx/AniMath/releases/download/v2.1-alpha/AniMath_v2.1-alpha.zip" class="btn">Download for Windows</a>
+                    <p><small>Version 2.1-alpha</small></p>
+                </div>
+                <div class="download-option">
+                    <div class="download-icon">🍎</div>
+                    <h3>macOS</h3>
+                    <p>Compatible with macOS 10.14+</p>
+                    <a href="https://github.com/jithurx/AniMath/releases/download/v2.1-alpha/AniMath_v2.1-alpha.zip" class="btn">Download for macOS</a>
+                    <p><small>Version 2.1-alpha</small></p>
+                </div>
+                <div class="download-option">
+                    <div class="download-icon">🐧</div>
+                    <h3>Linux</h3>
+                    <p>Compatible with Ubuntu, Debian, Fedora</p>
+                    <a href="https://github.com/jithurx/AniMath/releases/download/v2.1-alpha/AniMath_v2.1-alpha.zip" class="btn">Download for Linux</a>
+                    <p><small>Version 2.1-alpha</small></p>
+                </div>
+            </div>
+            <div class="source-option">
+                <div class="download-icon">🐙</div>
+                <h3>Source Code</h3>
+                <p>Clone or download from GitHub repository</p>
+                <a href="https://github.com/jithurx/AniMath" class="btn">View on GitHub</a>
+            </div>
+
+            <div class="system-requirements">
+                <h3>System Requirements</h3>
+                <table>
+                    <tr>
+                        <th>Component</th>
+                        <th>Minimum</th>
+                        <th>Recommended</th>
+                    </tr>
+                    <tr>
+                        <td>CPU</td>
+                        <td>Dual-core</td>
+                        <td>Quad-core</td>
+                    </tr>
+                    <tr>
+                        <td>RAM</td>
+                        <td>4GB</td>
+                        <td>8GB or more</td>
+                    </tr>
+                    <tr>
+                        <td>Storage</td>
+                        <td>1GB free</td>
+                        <td>5GB free</td>
+                    </tr>
+                    <tr>
+                        <td>OS</td>
+                        <td>Windows 10, macOS 10.14, Ubuntu 18.04</td>
+                        <td>Latest version</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do I need to know how to code to use this application?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No! AniMath is designed to be used by anyone, regardless of their programming experience. Simply describe the mathematical concept you want to visualize in plain English, and the AI will generate the necessary code for you.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do I need a Google Gemini API key?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, a Google Gemini API key is required to use the application. You can obtain one for free from the <a href="https://aistudio.google.com/" target="_blank">Google AI Studio</a>. The application will prompt you to enter your API key on first launch.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What kinds of math concepts can I visualize?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can visualize a wide range of mathematical concepts including but not limited to:</p>
+                        <ul>
+                            <li>Geometric proofs and constructions</li>
+                            <li>Calculus concepts (derivatives, integrals, limits)</li>
+                            <li>Linear algebra (vectors, matrices, transformations)</li>
+                            <li>Probability and statistics</li>
+                            <li>Complex numbers and functions</li>
+                            <li>Number theory concepts</li>
+                            <li>Graph theory and networks</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I modify the generated animations?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! The application shows you the generated Manim code, which you can edit to customize your animations further. If you're familiar with Python and Manim, you can make advanced modifications to create exactly what you need.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What video formats can I export to?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Currently, the application exports videos in MP4 format, which is widely compatible with most video players and presentation software. Future updates may include support for additional formats.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        I'm having installation issues. Where can I get help?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If you're experiencing installation problems:</p>
+                        <ol>
+                            <li>Check our <a href="#installation">installation guide</a> and make sure all prerequisites are installed</li>
+                            <li>Visit our <a href="https://github.com/jithurx/AniMath/issues" target="_blank">GitHub Issues</a> page to see if others have encountered the same problem</li>
+                            <li>Create a new issue with details about your system and the error messages you're seeing</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!--
+                <div class="footer-section">
+                    <h3>AniMath</h3>
+                    <p>made by : </p>
+                </div>
+                -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="#features">Features</a>
+                        <a href="#showcase">Showcase</a>
+                        <a href="#installation">Installation</a>
+                        <a href="#download">Download</a>
+                        <a href="#faq">FAQ</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <div class="footer-links">
+                        <a href="https://github.com/jithurx/AniMath" target="_blank">GitHub Repository</a>
+                        <a href="https://www.manim.community/" target="_blank">Manim Community</a>
+                        <a href="https://aistudio.google.com/" target="_blank">Google AI Studio</a>
+                        <!-- <a href="#">Documentation</a> -->
+                        <!-- <a href="#">Report a Bug</a> -->
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>made by<br>
+                    <a href="BitByBit/page.html" style="text-decoration: none; color: aliceblue; font-family: 'Pixelify Sans', sans-serif; font-size: 1.2rem;">
+                        Bit by Bit
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
