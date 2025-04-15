@@ -197,13 +197,13 @@ h2 {
     box-shadow: var(--shadow);
 }
 
-.gallery-item img {
+.gallery-item video {
     width: 100%;
     display: block;
     transition: transform 0.3s ease;
 }
 
-.gallery-item:hover img {
+.gallery-item:hover video {
     transform: scale(1.05);
 }
 
