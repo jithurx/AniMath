@@ -28,8 +28,7 @@ Please consider this version as a proof-of-concept rather than production-ready 
 
 ## ✨ Features
 
-- 🤖 **AI-Powered Conversion**: Turns math descriptions into Manim Python code  
-- 🎬 **High-Quality Animations**: Professional-grade rendering using Manim  
+- 🤖 **AI-Powered Conversion**: Turns math descriptions into Manim Python code   
 - 🖱️ **No Coding Required**: Intuitive interface—just type and visualize  
 - 📥 **Video Export**: Save animations for use in slides, videos, or lessons  
 - 🔗 **Google Gemini Integration**: Powered by advanced generative AI  
