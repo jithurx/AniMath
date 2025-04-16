@@ -4,6 +4,8 @@
 
 ![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg)
 
+### 🔗 Website 
+link: https://jithurx.github.io/AniMath/
 
 ## 📚 Overview
 
