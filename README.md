@@ -48,8 +48,8 @@ Please consider this version as a proof-of-concept rather than production-ready 
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/manim-math-visualizer.git
-   cd manim-math-visualizer
+   git clone https://github.com/jithurx/AniMath.git
+   cd AniMath
    ```
 
 2. **Run the setup script**
