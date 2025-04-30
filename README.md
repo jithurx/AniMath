@@ -1,6 +1,6 @@
 # 🧮 Manim Math Visualization Generator
 
-> **Transform math concepts into stunning animations using the power of AI and Manim.**
+> **Transform math concepts into animations using the power of AI and Manim.**
 
 ![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg)
 
