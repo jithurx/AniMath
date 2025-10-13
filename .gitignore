@@ -1,0 +1,10 @@
+venv
+requirements.txt
+
+run_app.sh
+__pycache__/    
+api
+
+media
+
+generated_manim.py

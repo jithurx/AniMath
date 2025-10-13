@@ -83,7 +83,10 @@ def setup_system_dependencies():
     
     elif system == "linux":
         # Try different package managers
-        if shutil.which("apt"):
+        if shutil.which("pacman"):
+            # Arch Linux and derivatives (Manjaro, EndeavourOS, etc.)
+            run_command("sudo pacman -Sy --noconfirm ffmpeg", "Installing FFmpeg using pacman")
+        elif shutil.which("apt"):
             run_command("sudo apt update && sudo apt install -y ffmpeg", "Installing FFmpeg using apt")
         elif shutil.which("yum"):
             run_command("sudo yum install -y ffmpeg", "Installing FFmpeg using yum")
@@ -93,15 +96,30 @@ def setup_system_dependencies():
             print("Please install FFmpeg manually using your distribution's package manager.")
             input("Press Enter to continue after installing FFmpeg...")
     
-    # Install Cairo (required for Manim)
-    print_step("Installing Cairo (required for Manim)")
+    # Install Cairo and other dependencies (required for Manim)
+    print_step("Installing Cairo and development libraries (required for Manim)")
     if system == "windows":
         print("Cairo will be installed via pip later in the process")
     elif system == "darwin":
         if shutil.which("brew"):
             run_command("brew install cairo pango", "Installing Cairo using Homebrew")
     elif system == "linux":
-        if shutil.which("apt"):
+        if shutil.which("pacman"):
+            # Arch Linux packages
+            packages = [
+                "cairo",
+                "pango",
+                "pkgconf",
+                "python",
+                "python-pip",
+                "tk",  # Required for tkinter
+                "texlive-basic",  # Optional but recommended for LaTeX support
+                "texlive-latex"    # Optional but recommended for LaTeX support
+            ]
+            package_list = " ".join(packages)
+            run_command(f"sudo pacman -Sy --noconfirm {package_list}", 
+                       "Installing Cairo and dependencies using pacman")
+        elif shutil.which("apt"):
             run_command("sudo apt update && sudo apt install -y libcairo2-dev pkg-config python3-dev", 
                        "Installing Cairo using apt")
         elif shutil.which("yum"):
@@ -125,27 +143,26 @@ def create_virtual_environment():
     print_header("SETTING UP PYTHON ENVIRONMENT")
     print_step("Creating virtual environment")
     
-    # Install virtualenv if needed
-    if not shutil.which("pip"):
-        print("pip is not installed. Please install pip first.")
-        sys.exit(1)
-    
-    run_command("pip install --upgrade pip", "Upgrading pip")
-    run_command("pip install virtualenv", "Installing virtualenv")
-    
-    # Create virtual environment
+    # Create virtual environment first (works on externally-managed systems)
     venv_path = os.path.join(os.getcwd(), "venv")
     
     if os.path.exists(venv_path):
         print("Virtual environment already exists at:", venv_path)
     else:
-        run_command(f"virtualenv {venv_path}", "Creating virtual environment")
+        python_cmd = "python3" if shutil.which("python3") else "python"
+        run_command(f"{python_cmd} -m venv {venv_path}", "Creating virtual environment")
     
     # Determine activate script path
     if platform.system().lower() == "windows":
         activate_script = os.path.join(venv_path, "Scripts", "activate")
+        pip_path = os.path.join(venv_path, "Scripts", "pip")
     else:
         activate_script = os.path.join(venv_path, "bin", "activate")
+        pip_path = os.path.join(venv_path, "bin", "pip")
+    
+    # Upgrade pip inside the virtual environment (safe on Arch)
+    print_step("Upgrading pip inside virtual environment")
+    run_command(f"{pip_path} install --upgrade pip", "Upgrading pip in venv")
     
     print(f"✓ Virtual environment created at: {venv_path}")
     return activate_script
@@ -178,6 +195,7 @@ moderngl-window>=2.4.1
 watchdog>=2.1.6
 IPython>=8.0.0
 webcolors>=1.12
+screeninfo>=0.8
 """
     
     with open("requirements.txt", "w") as f:
@@ -186,7 +204,7 @@ webcolors>=1.12
     # Install the dependencies within the virtual environment
     print_step("Installing Python packages (this may take a while)")
     if platform.system().lower() == "windows":
-        command = f"{activate_script} && pip install -r requirements.txt"
+        command = f'"{activate_script}" && pip install -r requirements.txt'
     else:
         command = f"source {activate_script} && pip install -r requirements.txt"
     
@@ -202,7 +220,7 @@ def create_startup_script(activate_script):
         with open("run_app.bat", "w") as f:
             f.write(f"@echo off\n")
             f.write(f"call {activate_script}\n")
-            f.write(f"python manim_ui.py\n")
+            f.write(f"python main.py\n")
         
         print("✓ Created run_app.bat")
     else:
@@ -210,7 +228,7 @@ def create_startup_script(activate_script):
         with open("run_app.sh", "w") as f:
             f.write("#!/bin/bash\n")
             f.write(f"source {activate_script}\n")
-            f.write("python manim_ui.py\n")
+            f.write("python main.py\n")
         
         # Make it executable
         os.chmod("run_app.sh", 0o755)
@@ -225,7 +243,26 @@ def create_api_directory():
 def print_completion_message():
     """Print completion message with instructions"""
     print_header("SETUP COMPLETE")
-    print("""
+    
+    system = platform.system().lower()
+    if system == "linux" and shutil.which("pacman"):
+        print("""
+✅ All dependencies for the Manim Math Visualization Generator have been installed.
+
+📝 Arch Linux Note:
+  - For better LaTeX support, consider installing: sudo pacman -S texlive-most
+  - For additional fonts: sudo pacman -S ttf-dejavu ttf-liberation
+
+To run the application:
+  - Run: ./run_app.sh in terminal
+
+On first run, you'll be prompted to enter your Google Gemini API key.
+If you don't have one, you can get it from: https://aistudio.google.com/
+
+Enjoy creating math visualizations!
+""")
+    else:
+        print("""
 ✅ All dependencies for the Manim Math Visualization Generator have been installed.
 
 To run the application:

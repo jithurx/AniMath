@@ -354,7 +354,7 @@ class ManimUI:
     
     def refine_prompt(self, user_input):
         """Send user input to Gemini Flash to create a better prompt for Manim code generation."""
-        model = genai.GenerativeModel("gemini-1.5-flash")
+        model = genai.GenerativeModel("models/gemini-2.5-flash")
 
         system_prompt = (
             "You are an AI that helps generate precise prompts for AI code generation. "
@@ -372,7 +372,7 @@ class ManimUI:
 
     def generate_manim_code(self, refined_prompt):
         """Send the refined prompt to Gemini Flash to generate only Manim code."""
-        model = genai.GenerativeModel("gemini-1.5-flash")
+        model = genai.GenerativeModel("models/gemini-2.5-flash")
 
         final_prompt = (
             f"{refined_prompt}\n\n"
@@ -390,7 +390,7 @@ class ManimUI:
             return response.text.strip()
         else:
             return None
-
+    
     def clean_text(self, text: str) -> str:
         prefix = "```python"
         suffix = "```"
