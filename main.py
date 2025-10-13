@@ -380,7 +380,7 @@ class ManimUI:
     
     def refine_prompt(self, user_input):
         """Send user input to Gemini Flash to create a better prompt for Manim code generation."""
-        model = genai.GenerativeModel("models/gemini-1.5-pro-latest")
+        model = genai.GenerativeModel("models/gemini-1.5-flash-latest")
 
         system_prompt = (
             "You are an AI that helps generate precise prompts for AI code generation. "
@@ -398,7 +398,7 @@ class ManimUI:
 
     def generate_manim_code(self, refined_prompt):
         """Send the refined prompt to Gemini Flash to generate only Manim code."""
-        model = genai.GenerativeModel("models/gemini-1.5-pro-latest")
+        model = genai.GenerativeModel("models/gemini-1.5-flash-latest")
 
         final_prompt = (
             f"{refined_prompt}\n\n"
@@ -489,7 +489,7 @@ class ManimUI:
             thumbnail_path = "temp_thumbnail.png"
             subprocess.run(
                 f"ffmpeg -i \"{latest_video}\" -ss 00:00:01 -vframes 1 \"{thumbnail_path}\" -y",
-                shell=True,
+                shell=. True,
                 capture_output=True
             )
             
