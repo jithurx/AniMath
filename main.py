@@ -328,24 +328,50 @@ class ManimUI:
                 self.generate_button.config(state="normal")
                 return
             
-            # Clean and display code
             clean_code = self.clean_text(manim_code)
             self.code_output.insert(tk.END, clean_code)
             
-            # Step 3: Save script
+            # Step 3: Save and Run Manim Script (First Attempt)
             self.update_status("Processing: Saving Manim script", 75)
             self.save_manim_script(clean_code)
-            
-            # Step 4: Run Manim script
-            self.update_status("Processing: Rendering visualization", 90)
-            success = self.run_manim_script()
-            
-            if success:
+
+            self.update_status("Processing: Rendering visualization (Attempt 1)", 80)
+            result = self.run_manim_script()
+
+            if result.returncode == 0:
                 self.update_status("Complete: Visualization generated", 100)
                 self.display_video()
             else:
-                self.update_status("Error: Failed to render visualization", 0)
-            
+                # First attempt failed, try to fix it
+                self.update_status("Processing: Analyzing error", 85)
+                error_log = result.stderr
+
+                # Step 4: Regenerate code with error context
+                self.update_status("Processing: Regenerating code (Attempt 2)", 90)
+                fixed_code = self.regenerate_manim_code_with_error(clean_code, error_log)
+
+                if not fixed_code:
+                    self.update_status("Error: Failed to regenerate code", 0)
+                    self.generate_button.config(state="normal")
+                    return
+
+                clean_fixed_code = self.clean_text(fixed_code)
+                self.code_output.delete(1.0, tk.END)
+                self.code_output.insert(tk.END, clean_fixed_code)
+
+                # Save and Run Manim Script (Second Attempt)
+                self.update_status("Processing: Saving fixed script", 95)
+                self.save_manim_script(clean_fixed_code)
+
+                self.update_status("Processing: Rendering visualization (Attempt 2)", 98)
+                second_result = self.run_manim_script()
+
+                if second_result.returncode == 0:
+                    self.update_status("Complete: Visualization generated", 100)
+                    self.display_video()
+                else:
+                    self.update_status("Error: Failed to render after 2 attempts", 0)
+
         except Exception as e:
             self.update_status(f"Error: {str(e)}", 0)
         
@@ -354,7 +380,7 @@ class ManimUI:
     
     def refine_prompt(self, user_input):
         """Send user input to Gemini Flash to create a better prompt for Manim code generation."""
-        model = genai.GenerativeModel("models/gemini-2.5-flash")
+        model = genai.GenerativeModel("models/gemini-1.5-pro-latest")
 
         system_prompt = (
             "You are an AI that helps generate precise prompts for AI code generation. "
@@ -372,7 +398,7 @@ class ManimUI:
 
     def generate_manim_code(self, refined_prompt):
         """Send the refined prompt to Gemini Flash to generate only Manim code."""
-        model = genai.GenerativeModel("models/gemini-2.5-flash")
+        model = genai.GenerativeModel("models/gemini-1.5-pro-latest")
 
         final_prompt = (
             f"{refined_prompt}\n\n"
@@ -385,6 +411,35 @@ class ManimUI:
         )
 
         response = model.generate_content(final_prompt)
+
+        if response and hasattr(response, 'text'):
+            return response.text.strip()
+        else:
+            return None
+
+    def regenerate_manim_code_with_error(self, original_code, error_log):
+        """Send the original code and error log to Gemini to fix the code."""
+        model = genai.GenerativeModel("models/gemini-1.5-pro-latest")
+
+        system_prompt = (
+            "You are an AI that fixes errors in Manim scripts. "
+            "The following Manim script failed with the error provided. "
+            "Please fix the script to resolve the error. "
+            "Output only the corrected Python Manim script. Do not add explanations or extra text. "
+            "The script should define a Manim class called 'AutoScene'. "
+            "Ensure that text elements are well-aligned and old text disappears before new text appears. "
+            "Ensure proper alignment, remove previous text before adding new text, and include smooth transitions. "
+            "Take note of frame space and don't overflow out of frame. "
+            "Try to utilize all the frame area without overlapping."
+        )
+
+        prompt = (
+            f"{system_prompt}\n\n"
+            f"Original Code:\n{original_code}\n\n"
+            f"Error Log:\n{error_log}"
+        )
+
+        response = model.generate_content(prompt)
 
         if response and hasattr(response, 'text'):
             return response.text.strip()
@@ -412,9 +467,9 @@ class ManimUI:
         try:
             command = f"manim -pql {filename} {scene_name}"
             result = subprocess.run(command, shell=True, capture_output=True, text=True)
-            return result.returncode == 0
-        except Exception:
-            return False
+            return result
+        except Exception as e:
+            return subprocess.CompletedProcess(args=[], returncode=1, stdout="", stderr=str(e))
     
     def display_video(self):
         """Display the generated video in the UI."""
